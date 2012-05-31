@@ -1,0 +1,35 @@
+//- Put noscript as a partial
+noscript
+header
+    label(for="size_selector") Nonogram size
+    form(method="post", action="/save", id="edit_form")
+        select(name="nonogram_size", id="nonogram_size")
+            option(value="5",  selected=(5==nonogram_size))  5x5
+            option(value="6",  selected=(6==nonogram_size))  6x6
+            option(value="7",  selected=(7==nonogram_size))  7x7
+            option(value="8",  selected=(8==nonogram_size))  8x8
+            option(value="9",  selected=(9==nonogram_size))  9x9
+            option(value="10", selected=(10==nonogram_size)) 10x10
+            option(value="11", selected=(11==nonogram_size)) 11x11
+            option(value="12", selected=(12==nonogram_size)) 12x12
+            option(value="13", selected=(13==nonogram_size)) 13x13
+            option(value="14", selected=(14==nonogram_size)) 14x14
+            option(value="15", selected=(15==nonogram_size)) 15x15
+            option(value="20", selected=(20==nonogram_size)) 20x20
+        select(name="nonogram_level", id="nonogram_level")
+            option(value="1", selected=(1==nonogram_level)) 1 (Easiest)
+            option(value="2", selected=(2==nonogram_level)) 2
+            option(value="3", selected=(3==nonogram_level)) 3
+            option(value="4", selected=(4==nonogram_level)) 4
+            option(value="5", selected=(5==nonogram_level)) 5 (Hardest)
+        #colorSelector
+            div
+        input(type="text", placeholder="Write a title for the nonogram", name="nonogram_title", id="nonogram_title", value=nonogram_title)
+        input(type="text", placeholder="Write the author's name", name="nonogram_author", id="nonogram_author", value=nonogram_author)
+        input(type="hidden", name="nonogram_data", id="nonogram_data", value=nonogram_data)
+        input(type="hidden", name="nonogram_id", id="nonogram_id", value=nonogram_id)
+        input(type="button", value="Reset", id="reset")
+        input(type="submit", value="Save")
+    a(href="/list") Back to list
+footer
+    p(id="messages")

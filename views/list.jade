@@ -1,0 +1,10 @@
+ol
+    if nonograms
+        each nonogram in nonograms
+            li
+                a(href="edit/#{nonogram._id}")= nonogram.title
+                a(href="delete/#{nonogram._id}", class="delete") Remove 
+    else
+        p There are no nonograms
+
+a(href="new") Create a new nonogram

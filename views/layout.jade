@@ -1,0 +1,19 @@
+doctype 5
+html(lang="en")
+    head
+        title= title
+        meta(charset="utf-8")
+        script(type="text/javascript", src="/javascripts/raphael-min.js")
+        script(type="text/javascript", src="/javascripts/shadow.js")
+        script(type="text/javascript", src="/javascripts/jquery.min.js")
+        != js("constants.js")
+        != js("nonogram.js")
+        != js("board.js")
+        //- Controller-level scripts
+        each script in scripts 
+            != js(script)
+        link(type="text/css", href="/stylesheets/screen.css", rel="stylesheet", media="screen")
+        //- Controller-level css
+        each stylesheet in stylesheets 
+            link(type="text/css", href="/stylesheets/#{stylesheet}", rel="stylesheet", media="screen")
+    body!= body
