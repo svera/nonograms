@@ -71,7 +71,10 @@ $('document').ready ->
         player[pos] = MARKED_CELL
         
       if solution.isSolution player
-        console.log 'resuelto'
+        $("#dialog").dialog
+          modal: true
+          buttons: 
+            'Ok': -> $(this).dialog 'close'
 
     $('body').on 'mouseup', '[id^="cell"], [id^="tile"], [id^="mark"]', ->
       button_down = BUTTON_NOT_PRESSED
@@ -86,14 +89,25 @@ $('document').ready ->
         if player[pos] is MARKED_CELL
           $("[id^='mark#{pos}']").remove()
         player[pos] = FILLED_CELL
+        if solution.isSolution player
+          $("#dialog").dialog
+            modal: true
+            buttons: 
+              'Ok': -> $(this).dialog 'close'
       else if button_down is SECONDARY_BUTTON and player[pos] isnt MARKED_CELL
         board.putMark pos
         if player[pos] isnt EMPTY_CELL
           $("[id^='tile#{pos}']").remove()
         player[pos] = MARKED_CELL
+        if solution.isSolution player
+          $("#dialog").dialog
+            modal: true
+            buttons: 
+              'Ok': -> $(this).dialog 'close'
       else if not button_down and player[pos] is EMPTY_CELL
         # Highlight the cell
         $(@).attr 'fill', '#'+HIGHLIGHTED_CELL_COLOR
+        
 
     $('body').on 'mouseout', '[id^="cell"], [id^="tile"]', -> 
       pos = $(@).data 'pos'

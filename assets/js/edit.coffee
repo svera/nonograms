@@ -40,20 +40,17 @@ $('document').ready ->
   # Disable context menu, so the user can use mouse's secondary button normally
   $(document).bind "contextmenu", -> false
   # Colorpicker
-  $('#colorSelector').ColorPicker(
+  $('#colorSelector').ColorPicker
     color: '#'+color,
     onShow: (colpkr) ->
       $(colpkr).fadeIn 500
       return false
-    ,  
     onHide: (colpkr) ->
       $(colpkr).fadeOut 500
       return false
-    ,
     onChange: (hsb, hex, rgb) ->
       $('#colorSelector div').css 'backgroundColor', '#' + hex
       color = hex
-  )
 
   ###
    Resize elements on screen to fit the new window size if it changes
@@ -73,7 +70,7 @@ $('document').ready ->
       board.putTile pos, color
       # Mark the tile in the nonogram array, too
       nonogram.data[pos] = color
-    else if nonogram.data[pos] is FILLED_CELL
+    else if nonogram.data[pos] isnt (EMPTY_CELL or MARKED_CELL)
       # If you click on a tile, remove it
       $(@).remove()
       nonogram.data[pos] = EMPTY_CELL

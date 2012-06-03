@@ -12,8 +12,7 @@ html(lang="en")
         //- Controller-level scripts
         each script in scripts 
             != js(script)
-        link(type="text/css", href="/stylesheets/screen.css", rel="stylesheet", media="screen")
         //- Controller-level css
         each stylesheet in stylesheets 
-            link(type="text/css", href="/stylesheets/#{stylesheet}", rel="stylesheet", media="screen")
+            != css(stylesheet)
     body!= body

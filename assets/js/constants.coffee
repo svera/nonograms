@@ -11,7 +11,6 @@ root.SECONDARY_BUTTON   = 3
 # Constants for the values that a nonogram array can have
 root.EMPTY_CELL  = '-1'
 root.MARKED_CELL = '-2'
-root.FILLED_CELL =  '1'
 
 root.EMPTY_CELL_COLOR 		= 'fff'
 root.HIGHLIGHTED_CELL_COLOR = '0f0'

@@ -6,8 +6,8 @@ Nonogram = require '../models/nonogram.coffee'
 exports.index = (req, res) ->
   res.render "index",
     title:       "Nonogram"
-    scripts:     ['main.js']
-    stylesheets: []
+    scripts:     ['main.js', 'jquery-ui-1.8.20.custom.min.js']
+    stylesheets: ['screen.css', 'jquery-ui-1.8.20.custom.css']
 
 exports.new = (req, res) ->
   side = 5
@@ -15,7 +15,7 @@ exports.new = (req, res) ->
   res.render "edit",
     title:           "New nonogram"
     scripts:         ['colorpicker.js', 'edit.js']
-    stylesheets:     ['colorpicker.css']
+    stylesheets:     ['screen.css', 'colorpicker.css']
     nonogram_data:   EMPTY_CELL for num in [0...side*side]
     nonogram_id:     null
     nonogram_title:  null
@@ -30,7 +30,7 @@ exports.edit = (req, res) ->
     res.render "edit",
       title:           "Nonogram editor"
       scripts:         ['colorpicker.js', 'edit.js']
-      stylesheets:     ['colorpicker.css']
+      stylesheets:     ['screen.css', 'colorpicker.css']
       nonogram_data:   nonogram.data
       nonogram_id:     nonogram.id
       nonogram_title:  nonogram.title
