@@ -3,6 +3,7 @@ ol
         each nonogram in nonograms
             li
                 a(href="edit/#{nonogram._id}")= nonogram.title
+                &nbsp;
                 a(href="delete/#{nonogram._id}", class="delete") Remove 
     else
         p There are no nonograms

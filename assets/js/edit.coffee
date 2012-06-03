@@ -104,7 +104,7 @@ $('document').ready ->
   ###
    When the user wants to change the nonogram's size
   ###
-  $('#size_selector').change ->
+  $('#nonogram_size').change ->
     paper.clear()
     board.board_size_in_tiles = $(@).val()
     nonogram.setSize $(@).val()
