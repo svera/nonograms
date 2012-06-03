@@ -23,7 +23,8 @@ class Board
     # If we click on a board cell, create a tile and put it on it
     tile = @paper.rect x, y, @tile_size, @tile_size
     tile.attr 'fill', '#'+color
-    tile.attr 'stroke-width', '0'
+    # Bug in chrome that ignores stroke-width = 0
+    tile.attr 'stroke-width', 0.01
     tile.node.id = "tile#{pos}"
     # Custom attributes to identify the tile
     # We use HTML5 'data-' attributes
@@ -126,16 +127,16 @@ class Board
   ###
   _calculateSizes: ->
     # Board cell size (in pixels)
-    @cell_size = Math.ceil @maximum_board_size_in_pixels/@nonogram.side
+    @cell_size = Math.floor @maximum_board_size_in_pixels/@nonogram.side
     @board_size_in_pixels = @cell_size*@nonogram.side
     # Tile size (in pixels)
     @tile_size = @cell_size-2
     # Tile size (in pixels)
     @mark_size = @cell_size-16
     # Hint font size (in pixels)
-    @hint_font_size = Math.ceil @cell_size/2
+    @hint_font_size = Math.floor @cell_size/2
     # Calculate the hint background length based on a certain percentage of the board size
-    @hint_background_size =  Math.ceil @board_size_in_pixels*.60
+    @hint_background_size =  Math.floor @board_size_in_pixels*.60
 
   ###
    Puts a color background under the hints

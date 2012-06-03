@@ -26,6 +26,8 @@ $('document').ready ->
   $.ajax
     url: '/random'
   .done (data) ->
+    audioElement = new Audio()
+    audioElement.src = '/audio/beep-good.ogg'
     # The board's array is represented as a single-dimensional one, streamlined from
     # left to right and from top to bottom
     solution = new Nonogram data
@@ -75,6 +77,7 @@ $('document').ready ->
           modal: true
           buttons: 
             'Ok': -> $(this).dialog 'close'
+        audioElement.play()
 
     $('body').on 'mouseup', '[id^="cell"], [id^="tile"], [id^="mark"]', ->
       button_down = BUTTON_NOT_PRESSED
@@ -94,6 +97,7 @@ $('document').ready ->
             modal: true
             buttons: 
               'Ok': -> $(this).dialog 'close'
+          audioElement.play()
       else if button_down is SECONDARY_BUTTON and player[pos] isnt MARKED_CELL
         board.putMark pos
         if player[pos] isnt EMPTY_CELL
@@ -104,6 +108,7 @@ $('document').ready ->
             modal: true
             buttons: 
               'Ok': -> $(this).dialog 'close'
+          audioElement.play()
       else if not button_down and player[pos] is EMPTY_CELL
         # Highlight the cell
         $(@).attr 'fill', '#'+HIGHLIGHTED_CELL_COLOR
