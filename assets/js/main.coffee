@@ -68,11 +68,11 @@ $('document').ready ->
       if button_down is MAIN_BUTTON
         if player[pos] is MARKED_CELL
           $("[id^='mark#{pos}']").remove()
+          # Update the solution array
           player[pos] = FILLED_CELL
-          # Mark the tile in the solution array, too
           board.putTile pos
         else if player[pos] is FILLED_CELL
-          # If you click on a tile, remove it
+          # If there's a tile in that position, remove it
           $("[id^='tile#{pos}']").remove()
           player[pos] = EMPTY_CELL
         else
@@ -81,13 +81,12 @@ $('document').ready ->
 
       if button_down is SECONDARY_BUTTON
         if player[pos] is MARKED_CELL
-          # If you click on a mark, remove it
+          # If there's a mark in that position, remove it
           $("[id^='mark#{pos}']").remove()
           player[pos] = EMPTY_CELL
         else if player[pos] is FILLED_CELL
           $("[id^='tile#{pos}']").remove()
           player[pos] = MARKED_CELL
-          # Mark the tile in the solution array, too
           board.putMark pos
         else
           board.putMark pos
@@ -102,6 +101,7 @@ $('document').ready ->
     # Highligth the cell if the mouse cursor is over it
     # As we're using JQuery to capture events, we also use its attr() method
     # instead Raphael's one
+    # TODO REWRITE AS ABOVE
     $('body').on 'mouseover', '[id^="cell"], [id^="tile"]',  ->
       pos = $(@).data 'pos'
       if button_down is MAIN_BUTTON and player[pos] is (EMPTY_CELL or MARKED_CELL)
