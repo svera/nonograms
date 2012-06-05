@@ -3,6 +3,8 @@ button_down = BUTTON_NOT_PRESSED
 # Preload audio
 audioElement = new Audio()
 audioElement.src = '/audio/beep-good.ogg'
+# Timer
+time = null
 
 resolved = ->
   $("#dialog").dialog
@@ -20,12 +22,12 @@ $('document').ready ->
   viewport_height = $(window).height()
   paper = Raphael 0, 0, viewport_width-1, viewport_height-1
   if paper.width < paper.height
-    # We reserve 1/3 of the viewing area for the hints information
+    # We reserve 1/2.4 of the viewing area for the hints information
     # TODO center the board including the hints info
-    margin = Math.floor paper.width/3
+    margin = Math.floor paper.width/2.4
     board_size_in_pixels = paper.width-margin
   else
-    margin = Math.floor paper.height/3
+    margin = Math.floor paper.height/2.4
     board_size_in_pixels = paper.height-margin
 
   # Center the board both vertically and horizontally
@@ -44,7 +46,8 @@ $('document').ready ->
     player = (EMPTY_CELL for num in [0...data.length])
     board = new Board paper, x0, y0, board_size_in_pixels, solution
     board.render solution.getHintValues()
-
+    # Initialize timer
+    time = new Date().time()
     # Prevent accidental dragging of the SVG layer
     # TODO do also for VML
     $('svg').bind 'dragstart', (event) -> event.preventDefault()

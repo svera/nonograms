@@ -7,7 +7,7 @@ class Board
   BOARD_SHADOW_SIZE          = 2
   BOARD_SHADOW_RADIUS        = 0
   ODD_HINT_BACKGROUND_COLOR  = 'fff'
-  EVEN_HINT_BACKGROUND_COLOR = 'ccc'
+  EVEN_HINT_BACKGROUND_COLOR = 'bbc'
 
 
   ###
@@ -136,7 +136,7 @@ class Board
     # Hint font size (in pixels)
     @hint_font_size = Math.floor @cell_size/2
     # Calculate the hint background length based on a certain percentage of the board size
-    @hint_background_size =  Math.floor @board_size_in_pixels*.60
+    @hint_background_size =  Math.floor @board_size_in_pixels*.35
 
   ###
    Puts a color background under the hints
