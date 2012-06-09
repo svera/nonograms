@@ -106,13 +106,13 @@ $('document').ready ->
       $(@).attr 'fill', '#'+EMPTY_CELL_COLOR
       if button_down is MAIN_BUTTON
         if player[pos] is MARKED_CELL
-          $("[id^='mark#{pos}']").remove()
+          $("[id='mark#{pos}']").remove()
           # Update the solution array
           player[pos] = FILLED_CELL
           board.putTile pos
         else if player[pos] is FILLED_CELL
           # If there's a tile in that position, remove it
-          $("[id^='tile#{pos}']").remove()
+          $("[id='tile#{pos}']").remove()
           player[pos] = EMPTY_CELL
         else
           board.putTile pos
@@ -121,10 +121,10 @@ $('document').ready ->
       if button_down is SECONDARY_BUTTON
         if player[pos] is MARKED_CELL
           # If there's a mark in that position, remove it
-          $("[id^='mark#{pos}']").remove()
+          $("[id='mark#{pos}']").remove()
           player[pos] = EMPTY_CELL
         else if player[pos] is FILLED_CELL
-          $("[id^='tile#{pos}']").remove()
+          $("[id='tile#{pos}']").remove()
           player[pos] = MARKED_CELL
           board.putMark pos
         else
@@ -141,14 +141,14 @@ $('document').ready ->
 
       if button_down is MAIN_BUTTON and player[pos] isnt FILLED_CELL
         if player[pos] is MARKED_CELL
-          $("[id^='mark#{pos}']").remove()
+          $("[id='mark#{pos}']").remove()
         player[pos] = FILLED_CELL
         board.putTile pos
         resolved() if solution.isSolution player
           
       if button_down is SECONDARY_BUTTON and player[pos] isnt MARKED_CELL
         if player[pos] is FILLED_CELL
-          $("[id^='tile#{pos}']").remove()
+          $("[id='tile#{pos}']").remove()
         player[pos] = MARKED_CELL
         board.putMark pos
         resolved() if solution.isSolution player
