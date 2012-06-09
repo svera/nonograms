@@ -14,4 +14,4 @@ root.MARKED_CELL = '-2'
 root.FILLED_CELL = '1'
 
 root.EMPTY_CELL_COLOR 		= 'fff'
-root.HIGHLIGHTED_CELL_COLOR = '0f0'
+root.HIGHLIGHTED_CELL_COLOR = 'ffa'

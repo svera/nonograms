@@ -7,7 +7,7 @@ Nonogram = new Schema {
     size:    {type: Number, min: 5, max: 20} 
     data:    String, 
     author:  String, 
-    level:   {type: Number, default: 1}
+    level:   {type: Number, default: 1, min: 1, max: 5}
     random:  {type: String, default: Math.random()}
     created: {type: Date, default: Date.now()} 
 }, {collection : 'nonograms'}
