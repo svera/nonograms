@@ -7,7 +7,8 @@
       "npm":  "1.0.x"
   }
   , "dependencies": {
-      "express": "2.5.8"
+      "coffee-script": "1.3.3"
+    , "express": "2.5.8"
     , "stylus": ">= 0.0.1"
     , "jade": ">= 0.0.1"
     , "mongoose": ">= 2.6.3"
