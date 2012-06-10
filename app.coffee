@@ -44,6 +44,7 @@ app.delete '/delete/:id', routes.delete
 app.get    '*', (req, res) ->
   res.send 'what???', 404
 
-
-app.listen 8464, ->
+# Check for heroku's environment variable port, or use 3000 as port if it's not defined
+port = process.env.PORT ? 3000
+app.listen port, ->
   console.log "Express server listening on port %d in %s mode", app.address().port, app.settings.env
