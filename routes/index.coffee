@@ -102,6 +102,7 @@ exports.save = (req, res) ->
     new_nono = new Nonogram data
     new_nono.save (err) ->
       if err?
+        console.log err 
         res.send 500
       else 
         res.send new_nono._id
