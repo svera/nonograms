@@ -25,7 +25,7 @@ app.configure "development", ->
   )
 
 app.configure "production", ->
-  mongoose.connect 'mongodb://sergio.vera:Skywalk3r@ds033877.mongolab.com:33877/heroku_app5128642'
+  mongoose.connect 'mongodb://heroku_app5128642:3km95tva04ilm5sj79qsbgt5j3@ds033877.mongolab.com:33877/heroku_app5128642'
   app.use express.errorHandler()
 
 mongoose.connection.on "open", ->
