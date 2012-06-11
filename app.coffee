@@ -3,13 +3,6 @@ mongoose = require "mongoose"
 routes   = require "./routes"
 app = module.exports = express.createServer()
 
-# connect to Mongo when the app initializes
-mongoose.connect 'mongodb://localhost/project_n'
-
-mongoose.connection.on "open", ->
-  console.log "mongodb is connected!!"
-
-
 app.configure ->
   app.set "views", __dirname + "/views"
   app.set "view engine", "jade"
@@ -24,13 +17,19 @@ app.configure ->
   app.use app.router
 
 app.configure "development", ->
+  # connect to Mongo when the app initializes
+  mongoose.connect 'mongodb://localhost/project_n'
   app.use express.errorHandler(
     dumpExceptions: true
     showStack: true
   )
 
 app.configure "production", ->
+  mongoose.connect 'mongodb://sergio.vera:Skywalk3r@ds033877.mongolab.com:33877/heroku_app5128642'
   app.use express.errorHandler()
+
+mongoose.connection.on "open", ->
+  console.log "mongodb is connected!!"
 
 # Routes
 app.get    '/',           routes.index
