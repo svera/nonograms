@@ -21,8 +21,10 @@ class Nonogram
     return false if arr.length isnt @data.length
     for i in [0...arr.length]
       # Because @data contains not only if there's a block in the position, but also its color information
-      # we consider any value greather than 1 to be 1
-      return false if (arr[i] is (EMPTY_CELL or MARKED_CELL) and @data[i] isnt (EMPTY_CELL or MARKED_CELL)) or (arr[i] is FILLED_CELL and @data[i] is (EMPTY_CELL or MARKED_CELL))
+      # we consider any value greater than 1 to be 1
+      return false if arr[i] is EMPTY_CELL and @data[i] isnt (EMPTY_CELL or MARKED_CELL)
+      return false if arr[i] is MARKED_CELL and @data[i] isnt (EMPTY_CELL or MARKED_CELL)
+      return false if arr[i] is FILLED_CELL and @data[i] is (EMPTY_CELL or MARKED_CELL)
     true
 
   ###

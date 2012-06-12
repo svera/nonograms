@@ -130,7 +130,7 @@ class Board
     @cell_size = Math.floor @maximum_board_size_in_pixels/@nonogram.side
     @board_size_in_pixels = @cell_size*@nonogram.side
     # Tile size (in pixels)
-    @tile_size = @cell_size-2
+    @tile_size = @cell_size-4
     # Tile size (in pixels)
     @mark_size = @cell_size-16
     # Hint font size (in pixels)
