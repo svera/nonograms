@@ -1,3 +1,5 @@
+HEADER_HEIGHT = 75
+
 # 0 = for no button pressed, 1 for main button, 3 for secondary button
 button_down = BUTTON_NOT_PRESSED
 # Preload audio
@@ -65,8 +67,12 @@ resolved = ->
 $('document').ready ->
   # Initialize a Raphael canvas to fit the whole viewport
   viewport_width  = $(window).width()
-  viewport_height = $(window).height()
-  paper = Raphael 0, 0, viewport_width-1, viewport_height-1
+  # The viewport height fits the whole browser's height except the height
+  # reserved for the page's header
+  viewport_height = $(window).height()-HEADER_HEIGHT
+  # The drawing area starts just after the header one, and fits the whole
+  # browser's width
+  paper = Raphael 0, HEADER_HEIGHT, viewport_width-1, viewport_height-1
   if paper.width < paper.height
     # We reserve 1/2.4 of the viewing area for the hints information
     # TODO center the board including the hints info
@@ -106,13 +112,13 @@ $('document').ready ->
       $(@).attr 'fill', '#'+EMPTY_CELL_COLOR
       if button_down is MAIN_BUTTON
         if player[pos] is MARKED_CELL
-          $("[id='mark#{pos}']").remove()
+          $("#mark#{pos}").remove()
           # Update the solution array
           player[pos] = FILLED_CELL
           board.putTile pos
         else if player[pos] is FILLED_CELL
           # If there's a tile in that position, remove it
-          $("[id='tile#{pos}']").remove()
+          $("#tile#{pos}").remove()
           player[pos] = EMPTY_CELL
         else
           board.putTile pos
@@ -121,10 +127,10 @@ $('document').ready ->
       if button_down is SECONDARY_BUTTON
         if player[pos] is MARKED_CELL
           # If there's a mark in that position, remove it
-          $("[id='mark#{pos}']").remove()
+          $("#mark#{pos}").remove()
           player[pos] = EMPTY_CELL
         else if player[pos] is FILLED_CELL
-          $("[id='tile#{pos}']").remove()
+          $("#tile#{pos}").remove()
           player[pos] = MARKED_CELL
           board.putMark pos
         else
@@ -135,20 +141,19 @@ $('document').ready ->
 
     # As we're using JQuery to capture events, we also use its attr() method
     # instead Raphael's one
-    # TODO REWRITE AS ABOVE
-    $('body').on 'mouseover', '[id^="cell"], [id^="tile"], [id^="mark"]',  ->
+    $('body').on 'mousemove', '[id^="cell"], [id^="tile"], [id^="mark"]',  ->
       pos = $(@).data 'pos'
 
       if button_down is MAIN_BUTTON and player[pos] isnt FILLED_CELL
         if player[pos] is MARKED_CELL
-          $("[id='mark#{pos}']").remove()
+          $("#mark#{pos}").remove()
         player[pos] = FILLED_CELL
         board.putTile pos
         resolved() if solution.isSolution player
           
       if button_down is SECONDARY_BUTTON and player[pos] isnt MARKED_CELL
         if player[pos] is FILLED_CELL
-          $("[id='tile#{pos}']").remove()
+          $("#tile#{pos}").remove()
         player[pos] = MARKED_CELL
         board.putMark pos
         resolved() if solution.isSolution player
