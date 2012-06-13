@@ -5,4 +5,4 @@ footer {color: #000; background-color: #fff; border-top: solid 1px #777; positio
 header label, header select, #colorSelector {float: left; margin-left: 10px}
 #colorSelector div {width: 30px; height: 30px; background: url(/images/colorpicker/select.png) center; background-color: #000}
 #dialog {display: none}
-h1 {margin: 0;}
+h1 {margin: 0 0 0 .5em; font-family: 'Slackey'}
