@@ -6,3 +6,5 @@ basics of those technologies. If you don't know what a Nonogram AKA Picross is, 
 
 Code is written in CoffeeScript, over a Node.js + Expressjs backend. Nonograms are stored in a MongoDB database,
 and rendered on the client using Raphaël, a SVG JS library. 
+
+You can check it at http://electric-ocean-8971.herokuapp.com/
